@@ -21,7 +21,7 @@ public class Behavior_BAttractionLocal extends PApplet {
 		fill(0, 255);
 
 		physics = new VPhysics();
-		physics.setfriction(.001f);
+		physics.setfriction(.4f);
 
 		for (int i = 0; i < amount; i++) {
 			// val for arbitrary radius
@@ -31,9 +31,9 @@ public class Behavior_BAttractionLocal extends PApplet {
 			// create particle (Vec pos, mass, radius)
 			VParticle particle = new VParticle(pos, 5, rad);
 			// add Collision Behavior
-			particle.addBehavior(new BCollision());
+			particle.addBehavior(new BCollision(.4f));
 			// add Local Attractor on each Particle (radius, strength)
-			particle.addBehavior(new BAttractionLocal(rad*5, 2));
+			particle.addBehavior(new BAttractionLocal(rad*2, 1));
 			// add particle to world
 			physics.addParticle(particle);
 		}

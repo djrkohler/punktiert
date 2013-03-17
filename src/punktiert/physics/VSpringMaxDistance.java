@@ -16,7 +16,7 @@ public class VSpringMaxDistance extends VSpring {
 	}
 
 	protected void update() {
-		if (b.distSquared(a) > restLengthSquared) {
+		if (b.distSq(a) > restLengthSquared) {
 			//super.update();
 			Vec delta = b.sub(a);
 			// add minute offset to avoid div-by-zero errors

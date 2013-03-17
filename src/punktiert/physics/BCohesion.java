@@ -61,7 +61,7 @@ public class BCohesion implements BehaviorInterface {
 			if (neighbor == p)
 				continue;
 
-			float d = p.distSquared(neighbor);
+			float d = p.distSq(neighbor);
 			if ((d > 0) && (d < neighbordistSquared)) {
 				sum.addSelf(neighbor);
 				count++;

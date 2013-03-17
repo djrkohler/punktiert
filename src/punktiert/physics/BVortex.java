@@ -30,7 +30,7 @@ public class BVortex implements BehaviorInterface {
 
 	public void apply(VParticle p) {
 		Vec delta = pos.sub(p);
-		float dist = delta.magSquared();
+		float dist = delta.magSq();
 		if (dist < radiusSquared) {
 			Vec f = delta.normalizeTo((1.0f - dist / radiusSquared)).multSelf(strength);
 			p.addForce(f);

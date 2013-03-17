@@ -34,7 +34,7 @@ public class BAttractionLocal implements BehaviorInterface {
 			if (neighbor == p)
 				continue;
 			Vec delta = neighbor.sub(p);
-			float dist = delta.magSquared();
+			float dist = delta.magSq();
 			if (dist < radiusSquared) {
 				Vec f = delta.normalizeTo((1.0f - dist / radiusSquared)).multSelf(strength);
 				sum.addSelf(f);

@@ -22,7 +22,7 @@ public class VSpringRange extends VSpring {
 	}
 
 	protected void update() {
-		if (b.distSquared(a) > restLengthMaxSquared) {
+		if (b.distSq(a) > restLengthMaxSquared) {
 			//super.update();
 			Vec delta = b.sub(a);
 			// add minute offset to avoid div-by-zero errors
@@ -36,7 +36,7 @@ public class VSpringRange extends VSpring {
 			}
 		}
 		
-		if (b.distSquared(a) < restLengthMinSquared) {
+		if (b.distSq(a) < restLengthMinSquared) {
 			//super.update();
 			Vec delta = b.sub(a);
 			// add minute offset to avoid div-by-zero errors

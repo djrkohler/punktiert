@@ -63,7 +63,7 @@ public class BSeparate implements BehaviorInterface {
 			if (neighbor == p)
 				continue;
 
-			float d = p.distSquared(neighbor);
+			float d = p.distSq(neighbor);
 
 			//SEPARATION:
 			if (d < desSepSquared) {
@@ -76,7 +76,7 @@ public class BSeparate implements BehaviorInterface {
 			if (countSep > 0) {
 				sep.multSelf(1.0f / countSep);
 			}
-			if (sep.magSquared() > 0) {
+			if (sep.magSq() > 0) {
 				sep.normalizeTo(maxSpeed);
 				sep.subSelf(p.getVelocity());
 				sep.limit(maxForce);

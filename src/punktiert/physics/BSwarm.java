@@ -92,7 +92,7 @@ public class BSwarm implements BehaviorInterface {
 					continue;
 			}
 
-			float d = p.distSquared(neighbor);
+			float d = p.distSq(neighbor);
 
 			// COHESION:
 			if (d < cohRadSquared) {
@@ -126,7 +126,7 @@ public class BSwarm implements BehaviorInterface {
 			sep.multSelf(1.0f / countSep);
 		}
 
-		if (sep.magSquared() > 0) {
+		if (sep.magSq() > 0) {
 			sep.normalizeTo(maxSpeed);
 			sep.subSelf(p.getVelocity());
 			sep.limit(maxForce);
@@ -136,7 +136,7 @@ public class BSwarm implements BehaviorInterface {
 		if (countAli > 0) {
 			ali.multSelf(1.0f / countAli);
 		}
-		if (ali.magSquared() > 0) {
+		if (ali.magSq() > 0) {
 			ali.normalizeTo(maxSpeed);
 			ali.subSelf(p.getVelocity());
 			ali.limit(maxForce);
@@ -159,7 +159,7 @@ public class BSwarm implements BehaviorInterface {
 	private Vec seek(Vec target, VParticle p) {
 		Vec steer;
 		Vec desired = target.sub(p);
-		float d = desired.magSquared();
+		float d = desired.magSq();
 		if (d > 0) {
 			desired.normalize();
 			desired.multSelf(maxSpeed);

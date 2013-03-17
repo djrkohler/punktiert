@@ -65,10 +65,11 @@ public class VParticleGroup {
 	}
 
 	public void update() {
-		if (physics != null)
-			physics.update();
 		if (hashgrid != null)
 			hashgrid.updateAll();
+		if (physics != null)
+			physics.update();
+		
 	}
 
 	public void addParticle(VParticle p) {
@@ -86,7 +87,6 @@ public class VParticleGroup {
 	}
 
 	public Collection<VParticle> getNeighbors(VParticle particle) {
-		
 		if (hashgrid == null && physics != null) {
 			return physics.hashgrid.check(particle);
 		}

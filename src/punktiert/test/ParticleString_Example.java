@@ -39,6 +39,11 @@ public class ParticleString_Example extends PApplet {
 		for (VSpring s : physics.springs) {
 			line(s.a.x, s.a.y, s.b.x, s.b.y);
 		}
+		
+		for(VParticle p : physics.particles) {
+			
+			println(physics.getnumConnected(p));
+		}
 
 		fill(255);
 		noStroke();

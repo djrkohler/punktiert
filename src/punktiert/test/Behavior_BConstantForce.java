@@ -26,9 +26,10 @@ public class Behavior_BConstantForce extends PApplet {
 	  BWorldBox box = new BWorldBox(new Vec(20,20), new Vec(width-20, height-20));
 	  box.setBounceSpace(true);
 	  physics.addBehavior(box);
+	  physics.setfriction(.3f);
 	 
 	  //something like gravity..
-	  physics.addBehavior(new BConstantForce(new Vec(0,.04f)));
+	  physics.addBehavior(new BConstantForce(new Vec(0,.001f)));
 	  
 	  force = new BConstantForce(new Vec());
 	  physics.addBehavior(force);
@@ -55,7 +56,7 @@ public class Behavior_BConstantForce extends PApplet {
 	  physics.update();
 
 	  //set Force related to mousePos and limit the length to .05
-	  force.setForce(new Vec(width*.5f-mouseX, height*.5f-mouseY).normalizeTo(.05f));
+	  force.setForce(new Vec(width*.5f-mouseX, height*.5f-mouseY).normalizeTo(.01f));
 	  
 	  for (VParticle p : physics.particles) {
 	    ellipse(p.x, p.y, p.getRadius()*2, p.getRadius()*2);

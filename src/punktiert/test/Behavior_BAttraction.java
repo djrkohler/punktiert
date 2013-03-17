@@ -26,7 +26,8 @@ public class Behavior_BAttraction extends PApplet {
 		physics.setfriction(.1f);
 
 		// new AttractionForce: (Vec pos, radius, strength)
-		attr = new BAttraction(new Vec(width * .5f, height * .5f),new Vec(1,0,0), 400, .1f);
+		//attr = new BAttraction(new Vec(width * .5f, height * .5f),new Vec(1,0,0), 400, .1f);
+		attr = new BAttraction(new Vec(width * .5f, height * .5f), 400, .1f);
 		//attr = new BVortex(new Vec(width * .5f, height * .5f), 400, .1f);
 		physics.addBehavior(attr);
 

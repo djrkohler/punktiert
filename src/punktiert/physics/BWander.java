@@ -59,7 +59,7 @@ public class BWander implements BehaviorInterface {
 	private Vec steer(Vec target, VParticle p) {
 		Vec steer;
 		Vec desired = target.sub(p);
-		float d = desired.magSquared();
+		float d = desired.magSq();
 		if (d > 0) {
 			desired.normalize();
 			desired.multSelf(3.0f);

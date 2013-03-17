@@ -12,7 +12,7 @@ public class Spring_Range extends PApplet {
 	VPhysics physics;
 
 	// number of particles in the scene
-	int amount = 600;
+	int amount = 800;
 
 	public void setup() {
 

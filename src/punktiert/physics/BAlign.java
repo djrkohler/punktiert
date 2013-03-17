@@ -61,7 +61,7 @@ public class BAlign implements BehaviorInterface {
 			if (neighbor == p)
 				continue;
 
-			float d = p.distSquared(neighbor);
+			float d = p.distSq(neighbor);
 
 			if (d < neighbordistSquared) {
 				ali.addSelf(neighbor.getVelocity());
@@ -72,7 +72,7 @@ public class BAlign implements BehaviorInterface {
 		if (countAli > 0) {
 			ali.multSelf(1.0f / countAli);
 		}
-		if (ali.magSquared() > 0) {
+		if (ali.magSq() > 0) {
 			ali.normalizeTo(maxSpeed);
 			ali.subSelf(p.getVelocity());
 			ali.limit(maxForce);

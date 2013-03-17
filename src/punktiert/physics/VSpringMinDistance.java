@@ -14,7 +14,7 @@ public class VSpringMinDistance extends VSpring {
 	}
 
 	protected void update() {
-		if (b.distSquared(a) < restLengthSquared) {
+		if (b.distSq(a) < restLengthSquared) {
 			super.update();
 		}
 	}

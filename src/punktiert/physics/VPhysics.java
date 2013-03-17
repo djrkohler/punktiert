@@ -34,10 +34,13 @@ public class VPhysics extends VPhysicsSimple {
 		super();
 		this.hashgrid = new HashGrid(80);
 	}
-/**
- * default neighborRange = 80; define this val, if your scene uses any bigger or extremely smaller influence radius for local neighbor sets
- * @param neighborRange
- */
+
+	/**
+	 * default neighborRange = 80; define this val, if your scene uses any
+	 * bigger or extremely smaller influence radius for local neighbor sets
+	 * 
+	 * @param neighborRange
+	 */
 	public VPhysics(float neighborRange) {
 		super();
 		this.hashgrid = new HashGrid(neighborRange);
@@ -97,7 +100,9 @@ public class VPhysics extends VPhysicsSimple {
 	public VPhysicsSimple addSpring(VSpring s) {
 		if (this.springs == null)
 			this.springs = new ArrayList<VSpring>();
-		this.springMap = new HashMapSprings(particles.size() * 4);
+		if (this.springMap == null)
+			this.springMap = new HashMapSprings(particles.size() * 4);
+
 		if (getSpring(s.a, s.b) == null) {
 			springs.add(s);
 			this.springMap.insert(s);
@@ -115,12 +120,13 @@ public class VPhysics extends VPhysicsSimple {
 	 * @return spring instance, or null if not found
 	 */
 	public VSpring getSpring(Vec a, Vec b) {
-
-		if (springMap.containsKey(a)) {
-			ArrayList<VSpring> aSprings = (ArrayList<VSpring>) springMap.get(a);
-			for (VSpring s : aSprings) {
-				if ((s.a == a && s.b == b) || (s.a == b && s.b == a)) {
-					return s;
+		if (springMap != null) {
+			if (springMap.containsKey(a)) {
+				ArrayList<VSpring> aSprings = (ArrayList<VSpring>) springMap.get(a);
+				for (VSpring s : aSprings) {
+					if ((s.a == a && s.b == b) || (s.a == b && s.b == a)) {
+						return s;
+					}
 				}
 			}
 		}
@@ -136,10 +142,12 @@ public class VPhysics extends VPhysicsSimple {
 	 */
 	public int getnumConnected(Vec a) {
 		int count = 0;
-		if (springMap.containsKey(a)) {
-			ArrayList<VSpring> aSprings = (ArrayList<VSpring>) springMap.get(a);
-			count = aSprings.size();
-			return count;
+		if (springMap != null) {
+			if (springMap.containsKey(a)) {
+				ArrayList<VSpring> aSprings = (ArrayList<VSpring>) springMap.get(a);
+				count = aSprings.size();
+				return count;
+			}
 		}
 		return count;
 	}

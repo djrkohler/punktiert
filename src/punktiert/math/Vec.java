@@ -8,6 +8,7 @@ import processing.core.PVector;
 /**
  * Vector Class based on Karsten Schmidt's toxi.geom.Vec3D class
  * some simplifications, no difference between 2D/3D; method names analogue to PVector; takes PVectors as input
+ * whereas this class is not extending the PVector class, because of PVectors extensive use of static methods
  * @author Daniel
  */
 
@@ -197,8 +198,8 @@ public class Vec implements Cloneable {
 		if (x == v.x() && y == v.y() && z == v.z()) {
 			return 0;
 		}
-		float a = magSquared();
-		float b = v.magSquared();
+		float a = magSq();
+		float b = v.magSq();
 		if (a < b) {
 			return -1;
 		}
@@ -275,7 +276,7 @@ public class Vec implements Cloneable {
 		}
 	}
 
-	public final float distSquared(Vec v) {
+	public final float distSq(Vec v) {
 		if (v != null) {
 			final float dx = x - v.x();
 			final float dy = y - v.y();
@@ -408,42 +409,6 @@ public class Vec implements Cloneable {
 		return this;
 	}
 
-	/**
-	 * Replaces the vector components with the fractional part of their current
-	 * values.
-	 * 
-	 * @return itself
-	 */
-	public final Vec frac() {
-		x -= Math.floor(x);
-		y -= Math.floor(y);
-		z -= Math.floor(z);
-		return this;
-	}
-
-	public final Vec getAbs() {
-		return new Vec(this).abs();
-	}
-
-	public final Vec getFloored() {
-		return new Vec(this).floor();
-	}
-
-	public final Vec getFrac() {
-		return new Vec(this).frac();
-	}
-
-	public final Vec getInverted() {
-		return new Vec(-x, -y, -z);
-	}
-
-	public final Vec getLimited(float lim) {
-		if (magSquared() > lim * lim) {
-			return getNormalizedTo(lim);
-		}
-		return new Vec(this);
-	}
-
 	public final Vec getNormalized() {
 		return new Vec(this).normalize();
 	}
@@ -451,19 +416,7 @@ public class Vec implements Cloneable {
 	public final Vec getNormalizedTo(float len) {
 		return new Vec(this).normalizeTo(len);
 	}
-
-	public final Vec getReciprocal() {
-		return copy().reciprocal();
-	}
-
-	public final Vec getReflected(Vec normal) {
-		return copy().reflect(normal);
-	}
-
-	public final Vec getRotatedAroundAxis(Vec axis, float theta) {
-		return new Vec(this).rotateAroundAxis(axis, theta);
-	}
-
+	
 	public final Vec getRotatedX(float theta) {
 		return new Vec(this).rotateX(theta);
 	}
@@ -476,9 +429,6 @@ public class Vec implements Cloneable {
 		return new Vec(this).rotateZ(theta);
 	}
 
-	public final Vec getSignum() {
-		return new Vec(this).signum();
-	}
 
 	public final float heading() {
 		return (float) Math.atan2(y, x);
@@ -602,7 +552,7 @@ public class Vec implements Cloneable {
 	 * @return itself
 	 */
 	public final Vec limit(float lim) {
-		if (magSquared() > lim * lim) {
+		if (magSq() > lim * lim) {
 			return normalize().multSelf(lim);
 		}
 		return this;
@@ -617,7 +567,7 @@ public class Vec implements Cloneable {
 		return (float) Math.sqrt(x * x + y * y + z * z);
 	}
 
-	public final float magSquared() {
+	public final float magSq() {
 		return x * x + y * y + z * z;
 	}
 
