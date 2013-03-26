@@ -160,6 +160,18 @@ public class VPhysics extends VPhysicsSimple {
 			this.box.setMax(max);
 		}
 	}
+	
+	public void setBounceSpace(boolean bounce) {
+		if (this.box != null) {
+			this.box.setBounceSpace(bounce);
+		}
+	}
+	
+	public void setWrappedSpace(boolean wrap) {
+		if (this.box != null) {
+			this.box.setWrapSpace(wrap);
+		}
+	}
 
 	public VPhysics clear() {
 		particles.clear();
