@@ -1,6 +1,5 @@
 // Punktiert is a particle engine based and thought as an extension of Karsten Schmidt's toxiclibs.physics code. 
-// This library is developed through and for an architectural context. Based on my teaching experiences over the past couple years.
-// (c) 2012 Daniel Köhler, daniel@lab-eds.org
+// This library is developed through and for an architectural context. Based on my teaching experiences over the past couple years. (c) 2012 Daniel Köhler, daniel@lab-eds.org
 
 //here: spherical collission detection
 
@@ -33,6 +32,7 @@ public void setup() {
     //add particle to world
     physics.addParticle(particle);
   }
+    
 }
 
 public void draw() {
@@ -42,6 +42,10 @@ public void draw() {
 
   for (VParticle p : physics.particles) {
     ellipse(p.x, p.y, p.getRadius()*2, p.getRadius()*2);
+  }
+  
+  if(mousePressed){
+    physics.addParticle(new VParticle(new Vec(mouseX, mouseY),1, random(5,20)).addBehavior(new BCollision()));
   }
 }
 
