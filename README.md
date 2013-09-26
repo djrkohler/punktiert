@@ -10,5 +10,6 @@ Punktiert is a particle engine based and thought as an extension of Karsten Schm
 This library is developed through and for an architectural context. Based on my teaching experiences over the past couple years.
 
 Tested Platform: windows 
-Processing: 1.5, 2.06, 2.08
-Dependencies: peasycam.jar for some examples
+Processing: 1.5, 2.01
+Dependencies: peasycam.jar for some examples; Rootbeer for GPU access: gpu Rootbeer is written by: Phil Pratt-Szeliga, Syracuse University, https://github.com/pcpratts/rootbeer1
+
