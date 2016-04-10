@@ -15,7 +15,7 @@ public class BWander implements BehaviorInterface {
 	public BWander(float wanderR, float wanderD, float change) {
 		this.wanderR = wanderR;
 		this.wanderD = wanderD;
-		this.change = wanderR;
+		this.change = change;
 	}
 
 	@Override
